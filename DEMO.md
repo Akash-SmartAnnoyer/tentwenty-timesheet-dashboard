@@ -45,18 +45,6 @@
 - **Authentication**: JWT token-based API protection
 - **Mock Data**: Realistic sample data for demonstration
 
-## 🧪 Testing
-
-Run the test suite:
-```bash
-npm test
-```
-
-Tests cover:
-- Component rendering
-- Form validation
-- User interactions
-- Error scenarios
 
 ## 📱 Responsive Design
 

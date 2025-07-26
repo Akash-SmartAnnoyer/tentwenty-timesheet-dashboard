@@ -58,7 +58,6 @@ A modern, responsive timesheet management application built with React, TypeScri
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-- `npm test` - Run tests (if implemented)
 
 ## 🏗️ Project Structure
 
@@ -142,15 +141,6 @@ interface TimesheetEntry {
 }
 ```
 
-## 🧪 Testing
-
-*Note: Testing framework is set up but tests are not implemented as per requirements.*
-
-### Test Setup
-- **Jest**: Testing framework
-- **React Testing Library**: Component testing utilities
-- **Test Files**: Located in `src/components/__tests__/`
-
 ## 📱 Responsive Design
 
 The application is fully responsive with:
@@ -220,3 +210,4 @@ This project is created for demonstration purposes as part of a technical assess
 ---
 
 **Built with ❤️ using React, TypeScript, and TailwindCSS**
+ 

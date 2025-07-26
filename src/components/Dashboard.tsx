@@ -149,7 +149,15 @@ export default function Dashboard() {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         onSubmit={handleCreateTimesheet}
-        timesheet={selectedTimesheet}
+        initialData={selectedTimesheet ? { 
+          day: '', 
+          task: { 
+            id: selectedTimesheet.id, 
+            description: selectedTimesheet.description || '', 
+            hours: selectedTimesheet.hours, 
+            project: 'Project A' 
+          } 
+        } : undefined}
         mode={modalMode}
       />
     </div>
