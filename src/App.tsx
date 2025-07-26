@@ -27,7 +27,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/tentwenty-timesheet-dashboard/">
         <div className="App">
           <Routes>
             <Route path="/login" element={<LoginForm />} />
