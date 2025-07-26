@@ -1,5 +1,3 @@
-# tentwenty-timesheet-dashboard
-Front-end developer assessment for Tentwenty — A Timesheet Management Dashboard built with Next.js 15, TypeScript, TailwindCSS, and next-auth.
 # Timesheet Management Application
 
 A modern, responsive timesheet management application built with React, TypeScript, and TailwindCSS. This application demonstrates clean code structure, proper state management, and a user-friendly interface for managing employee work hours.
@@ -221,4 +219,4 @@ This project is created for demonstration purposes as part of a technical assess
 
 ---
 
-**Built with ❤️ using React, TypeScript, and TailwindCSS** 
+**Built with ❤️ using React, TypeScript, and TailwindCSS**
