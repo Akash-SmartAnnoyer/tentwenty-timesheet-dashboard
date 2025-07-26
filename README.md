@@ -37,7 +37,7 @@ A modern, responsive timesheet management application built with React, TypeScri
 1. **Clone the repository**
    ```bash
    git clone <https://github.com/Akash-SmartAnnoyer/tentwenty-timesheet-dashboard>
-   cd timesheet-app
+   cd tentwenty-timesheet-dashboard
    ```
 
 2. **Install dependencies**
