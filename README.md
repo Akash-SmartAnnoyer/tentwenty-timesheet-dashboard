@@ -68,8 +68,7 @@ src/
 │   ├── Dashboard.tsx   # Main dashboard view
 │   ├── TimesheetTable.tsx # Timesheet entries table
 │   ├── TimesheetModal.tsx # Add/Edit modal
-│   ├── TimesheetDetailScreen.tsx # Detailed timesheet view
-│   └── __tests__/      # Component tests
+│   └── TimesheetDetailScreen.tsx # Detailed timesheet view
 ├── lib/                # Utility libraries
 │   ├── api.ts          # Mock API service
 │   └── auth.tsx        # Authentication context

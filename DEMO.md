@@ -46,6 +46,7 @@
 - **Mock Data**: Realistic sample data for demonstration
 
 
+
 ## 📱 Responsive Design
 
 The application is fully responsive and works on:
