@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/tentwenty-timesheet-dashboard/', // Set base for GitHub Pages
+  base: '/tentwenty-timesheet-dashboard/',
   plugins: [react()],
   server: {
     port: 3000,

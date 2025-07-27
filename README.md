@@ -25,7 +25,6 @@ A modern, responsive timesheet management application built with React, TypeScri
 - **Styling**: TailwindCSS for utility-first styling
 - **Routing**: React Router DOM for client-side routing
 - **State Management**: React Context API and hooks
-- **Date Handling**: date-fns for date manipulation
 - **Font**: Inter font family for modern typography
 
 ## 📦 Installation & Setup
@@ -37,8 +36,8 @@ A modern, responsive timesheet management application built with React, TypeScri
 ### Quick Start
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd timesheet-app
+   git clone <https://github.com/Akash-SmartAnnoyer/tentwenty-timesheet-dashboard>
+   cd tentwenty-timesheet-dashboard
    ```
 
 2. **Install dependencies**
@@ -194,14 +193,6 @@ The application is fully responsive with:
 - **Documentation**: 1 hour
 
 **Total: ~19 hours**
-
-## 🎯 Future Enhancements
-
-- **Real API Integration**: Replace mock data with actual backend
-- **Advanced Filtering**: Date range, status, and search filters
-- **Export Functionality**: PDF/Excel export capabilities
-- **Real-time Updates**: WebSocket integration for live updates
-- **Advanced Analytics**: Time tracking insights and reports
 
 ## 📄 License
 
