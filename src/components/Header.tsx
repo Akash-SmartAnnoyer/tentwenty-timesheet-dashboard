@@ -31,7 +31,7 @@ export default function Header({ user }: HeaderProps) {
       }}
     >
       <div 
-        className="flex justify-between items-center w-full"
+        className="flex justify-between items-center w-full px-4 lg:px-0"
         style={{
           width: '100%',
           height: '68px',
@@ -49,10 +49,10 @@ export default function Header({ user }: HeaderProps) {
           }}
         >
           <h1 
+            className="text-lg lg:text-2xl"
             style={{
               fontFamily: 'Inter',
               fontWeight: 600,
-              fontSize: '24px',
               lineHeight: '150%',
               letterSpacing: '0%',
               color: '#111928',
@@ -63,10 +63,10 @@ export default function Header({ user }: HeaderProps) {
             ticktock
           </h1>
           <span 
+            className="hidden sm:inline text-xs lg:text-sm"
             style={{
               fontFamily: 'Inter',
               fontWeight: 500,
-              fontSize: '14px',
               lineHeight: '150%',
               letterSpacing: '0%',
               color: '#111928',
@@ -81,7 +81,6 @@ export default function Header({ user }: HeaderProps) {
         <div 
           className="flex items-center justify-end relative"
           style={{
-            width: '686.5px',
             height: '24px',
             padding: '0 12px 0 24px',
             gap: '16px',
@@ -92,7 +91,8 @@ export default function Header({ user }: HeaderProps) {
             className="text-sm text-gray-700 flex items-center cursor-pointer hover:text-gray-900"
             onClick={toggleDropdown}
           >
-            {user?.name || 'User'}
+            <span className="hidden sm:inline">{user?.name || 'User'}</span>
+            <span className="sm:hidden">User</span>
             <svg 
               className={`w-4 h-4 ml-1 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} 
               fill="none" 

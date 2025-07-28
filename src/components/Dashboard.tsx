@@ -58,28 +58,21 @@ export default function Dashboard() {
       <Header user={user} />
       
       {/* Main content area */}
-      <div className="relative">
-        {/* Outer container with exact specifications */}
+      <div className="relative px-4 lg:px-0">
+        {/* Outer container with responsive specifications */}
         <div 
-          className="flex flex-col"
+          className="flex flex-col w-full max-w-7xl mx-auto"
           style={{ 
-            width: '1280px',
-            height: '522px',
             gap: '16px',
             opacity: 1,
-            position: 'absolute',
-            top: '95px',
-            left: '50%',
-            transform: 'translateX(-50%)'
+            marginTop: '95px'
           }}
         >
           
-          {/* Table container with exact specifications */}
+          {/* Table container with responsive specifications */}
           <div 
-            className="bg-white rounded-lg"
+            className="bg-white rounded-lg w-full"
             style={{ 
-              width: '1280px', 
-              height: '421px', 
               padding: '16px 24px 24px 24px',
               gap: '24px',
               borderRadius: '8px',
@@ -88,14 +81,13 @@ export default function Dashboard() {
           >
             <div className="flex justify-between items-center mb-8">
               <h1 
+                className="w-full"
                 style={{
-                  width: '1232px',
-                  height: '24px',
                   fontFamily: 'Inter',
                   fontWeight: 700,
                   fontStyle: 'normal',
-                  fontSize: '24px',
-                  lineHeight: '24px',
+                  fontSize: 'clamp(20px, 4vw, 24px)',
+                  lineHeight: '1',
                   letterSpacing: '0%',
                   color: '#111928',
                   margin: 0,
@@ -117,20 +109,20 @@ export default function Dashboard() {
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
               </div>
             ) : (
-              <TimesheetTable 
-                timesheets={timesheets} 
-                onRefresh={loadTimesheets}
-                onEdit={(timesheet) => handleOpenModal('edit', timesheet)}
-              />
+              <div className="overflow-x-auto">
+                <TimesheetTable 
+                  timesheets={timesheets} 
+                  onRefresh={loadTimesheets}
+                  onEdit={(timesheet) => handleOpenModal('edit', timesheet)}
+                />
+              </div>
             )}
           </div>
 
           {/* Footer container */}
           <div 
-            className="flex justify-center items-center bg-white rounded-lg"
+            className="flex justify-center items-center bg-white rounded-lg w-full"
             style={{ 
-              width: '1280px',
-              height: '85px',
               gap: '32px',
               opacity: 1,
               padding: '8px',

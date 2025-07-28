@@ -58,15 +58,15 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Top blue border */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-10"></div>
       
       {/* Left Panel - Login Form */}
-      <div className="w-1/2 bg-white flex items-center relative">
-        <div className="w-full max-w-md" style={{ paddingLeft: '80px' }}>
+      <div className="w-full lg:w-1/2 bg-white flex items-center justify-center lg:justify-start relative px-6 py-8 lg:py-0">
+        <div className="w-full max-w-md lg:max-w-none lg:pl-20">
           <h1 
-            className="mb-8"
+            className="mb-8 text-center lg:text-left"
             style={{
               fontFamily: 'Inter',
               fontWeight: 700,
@@ -80,7 +80,7 @@ export default function LoginForm() {
             Welcome back
           </h1>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 w-full">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email
@@ -92,7 +92,8 @@ export default function LoginForm() {
                 onChange={(e) => handleChange('email', e.target.value)}
                 placeholder="name@example.com"
                 style={{
-                  width: '576px',
+                  width: '100%',
+                  maxWidth: '576px',
                   height: '42px',
                   borderRadius: '8px',
                   border: '1px solid #D1D5DB',
@@ -123,7 +124,8 @@ export default function LoginForm() {
                 onChange={(e) => handleChange('password', e.target.value)}
                 placeholder="Enter your password"
                 style={{
-                  width: '576px',
+                  width: '100%',
+                  maxWidth: '576px',
                   height: '42px',
                   borderRadius: '8px',
                   border: '1px solid #D1D5DB',
@@ -164,7 +166,8 @@ export default function LoginForm() {
               type="submit"
               disabled={isSubmitting}
               style={{
-                width: '576px',
+                width: '100%',
+                maxWidth: '576px',
                 height: '41px',
                 borderRadius: '8px',
                 gap: '8px',
@@ -193,12 +196,13 @@ export default function LoginForm() {
       </div>
 
       {/* Right Panel - Promotional Content */}
-      <div className="w-1/2 bg-blue-600 flex items-center justify-center px-12">
+      <div className="w-full lg:w-1/2 bg-blue-600 flex items-center justify-center px-6 py-12 lg:px-12 lg:py-0">
         <div 
-          className="text-white"
+          className="text-white text-center lg:text-left"
           style={{
-            width: '576px',
-            height: '168px',
+            width: '100%',
+            maxWidth: '576px',
+            minHeight: '168px',
             gap: '12px',
             display: 'flex',
             flexDirection: 'column',
@@ -209,7 +213,7 @@ export default function LoginForm() {
             style={{
               fontFamily: 'Inter',
               fontWeight: 600,
-              fontSize: '40px',
+              fontSize: 'clamp(24px, 5vw, 40px)',
               lineHeight: '150%',
               letterSpacing: '0%',
               verticalAlign: 'middle',
@@ -223,7 +227,7 @@ export default function LoginForm() {
             style={{
               fontFamily: 'Inter',
               fontWeight: 400,
-              fontSize: '16px',
+              fontSize: 'clamp(14px, 3vw, 16px)',
               lineHeight: '150%',
               letterSpacing: '0%',
               color: '#ffffff',

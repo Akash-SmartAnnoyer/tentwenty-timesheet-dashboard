@@ -190,16 +190,16 @@ export default function TimesheetDetailScreen() {
       <Header user={user} />
       
       {/* Main Content */}
-      <div className="w-3/5 mx-auto py-8" style={{ width: '80%' }}>
+      <div className="w-full px-4 lg:px-0 lg:w-4/5 xl:w-3/5 mx-auto py-8">
         {/* Single Content Section with Header Integrated */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-white rounded-lg shadow-sm p-4 lg:p-6">
           {/* Header Section */}
           <div className="mb-6">
-            <div className="flex justify-between items-start mb-2">
-              <h1 className="text-2xl font-bold text-gray-900">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-2 gap-4">
+              <h1 className="text-xl lg:text-2xl font-bold text-gray-900">
                 This week's timesheet
               </h1>
-              <div className="text-right">
+              <div className="text-left lg:text-right">
                 <div className="relative">
                   <div className="text-sm text-gray-600 bg-white px-2 py-1 rounded border border-gray-200 inline-block relative">
                     {totalHours}/40 hrs
@@ -233,93 +233,94 @@ export default function TimesheetDetailScreen() {
           </div>
 
           {/* Two-column layout for days and tasks */}
-          <div className="grid grid-cols-12 gap-x-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-0">
             {Object.entries(weekData).map(([day, tasks]) => (
               <>
-                        {/* Date column */}
-        <div className="col-span-2 flex items-start pt-2 min-h-[48px]" key={day + '-date'}>
-          <span 
-            style={{
-              fontFamily: 'Inter',
-              fontWeight: 600,
-              fontSize: '18px',
-              lineHeight: '150%',
-              letterSpacing: '0%',
-              color: '#374151'
-            }}
-          >
-            {day}
-          </span>
-        </div>
-                {/* Tasks column */}
-                <div className="col-span-10 flex flex-col gap-2" key={day + '-tasks'}>
-                                {tasks.map((task) => (
-                <div key={task.id} className="flex items-center justify-between py-1.5 px-3 mb-2 border border-gray-200 rounded-md bg-white">
-                      <div className="flex-1 flex items-center" style={{ gap: '0px' }}>
-                                        <div className="flex-1">
-                  {editingTask === task.id ? (
-                    <input
-                      type="text"
-                      value={task.description}
-                      onChange={(e) => handleSaveTask(day, task.id, 'description', e.target.value)}
-                      className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      autoFocus
-                    />
-                  ) : (
-                    <span 
-                      className="text-gray-900"
-                      style={{
-                        fontFamily: 'Inter',
-                        fontWeight: 500,
-                        fontSize: '16px',
-                        lineHeight: '150%',
-                        letterSpacing: '0%',
-                        color: '#111928'
-                      }}
-                    >
-                      {task.description}
-                    </span>
-                  )}
-                </div>
-                <div className="w-12 pr-0">
-                  {editingTask === task.id ? (
-                    <input
-                      type="number"
-                      value={task.hours}
-                      onChange={(e) => handleSaveTask(day, task.id, 'hours', parseInt(e.target.value) || 0)}
-                      className="w-full px-2 py-1 border border-gray-300 rounded text-center text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    />
-                  ) : (
-                    <span 
-                      style={{
-                        fontFamily: 'Inter',
-                        fontWeight: 400,
-                        fontStyle: 'Regular',
-                        fontSize: '14px',
-                        lineHeight: '125%',
-                        letterSpacing: '0%',
-                        color: '#9CA3AF'
-                      }}
-                    >
-                      {task.hours}hrs
-                    </span>
-                  )}
-                </div>
-                <div className="w-24">
-                  <span className="inline-flex px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-800">
-                    {task.project}
+                {/* Date column */}
+                <div className="col-span-1 lg:col-span-2 flex items-start pt-2 min-h-[48px]" key={day + '-date'}>
+                  <span 
+                    className="text-base lg:text-lg"
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      lineHeight: '150%',
+                      letterSpacing: '0%',
+                      color: '#374151'
+                    }}
+                  >
+                    {day}
                   </span>
                 </div>
+                {/* Tasks column */}
+                <div className="col-span-1 lg:col-span-10 flex flex-col gap-2" key={day + '-tasks'}>
+                  {tasks.map((task) => (
+                    <div key={task.id} className="flex items-center justify-between py-1.5 px-3 mb-2 border border-gray-200 rounded-md bg-white">
+                      <div className="flex-1 flex items-center flex-wrap gap-2" style={{ gap: '0px' }}>
+                        <div className="flex-1 min-w-0">
+                          {editingTask === task.id ? (
+                            <input
+                              type="text"
+                              value={task.description}
+                              onChange={(e) => handleSaveTask(day, task.id, 'description', e.target.value)}
+                              className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                              autoFocus
+                            />
+                          ) : (
+                            <span 
+                              className="text-gray-900 text-sm lg:text-base break-words"
+                              style={{
+                                fontFamily: 'Inter',
+                                fontWeight: 500,
+                                lineHeight: '150%',
+                                letterSpacing: '0%',
+                                color: '#111928'
+                              }}
+                            >
+                              {task.description}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-12 pr-0">
+                            {editingTask === task.id ? (
+                              <input
+                                type="number"
+                                value={task.hours}
+                                onChange={(e) => handleSaveTask(day, task.id, 'hours', parseInt(e.target.value) || 0)}
+                                className="w-full px-2 py-1 border border-gray-300 rounded text-center text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                              />
+                            ) : (
+                              <span 
+                                className="text-xs lg:text-sm"
+                                style={{
+                                  fontFamily: 'Inter',
+                                  fontWeight: 400,
+                                  fontStyle: 'Regular',
+                                  lineHeight: '125%',
+                                  letterSpacing: '0%',
+                                  color: '#9CA3AF'
+                                }}
+                              >
+                                {task.hours}hrs
+                              </span>
+                            )}
+                          </div>
+                          <div className="w-20 lg:w-24">
+                            <span className="inline-flex px-2 py-0.5 text-xs rounded bg-blue-100 text-blue-800">
+                              {task.project}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="relative">
-                                            <button
-                      onClick={() => setShowDropdown(showDropdown === task.id ? null : task.id)}
-                      className="p-1 hover:bg-gray-200 rounded transition-colors"
-                    >
-                      <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM18 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </button>
+                      <div className="relative ml-2">
+                        <button
+                          onClick={() => setShowDropdown(showDropdown === task.id ? null : task.id)}
+                          className="p-1 hover:bg-gray-200 rounded transition-colors"
+                        >
+                          <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM18 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                          </svg>
+                        </button>
                         {showDropdown === task.id && (
                           <div className="absolute right-0 mt-1 w-24 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                             <button
@@ -339,58 +340,57 @@ export default function TimesheetDetailScreen() {
                       </div>
                     </div>
                   ))}
-                                {/* Add New Task Button - Only one per day */}
-              <button
-                onClick={() => handleOpenAddTaskModal(day)}
-                className="w-full mt-2 mb-4 flex items-center justify-center transition-all duration-200"
-                style={{
-                  height: '44px',
-                  gap: '8px',
-                  padding: '4px',
-                  borderRadius: '8px',
-                  border: '1px dashed #D1D5DB',
-                  background: 'transparent'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#E1EFFE';
-                  e.currentTarget.style.border = '1px dashed #1A56DB';
-                  const svg = e.currentTarget.querySelector('svg') as SVGElement;
-                  const span = e.currentTarget.querySelector('span') as HTMLElement;
-                  if (svg) svg.style.color = '#1A56DB';
-                  if (span) span.style.color = '#1A56DB';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.border = '1px dashed #D1D5DB';
-                  const svg = e.currentTarget.querySelector('svg') as SVGElement;
-                  const span = e.currentTarget.querySelector('span') as HTMLElement;
-                  if (svg) svg.style.color = '#6B7280';
-                  if (span) span.style.color = '#6B7280';
-                }}
-              >
-                <svg 
-                  className="text-gray-500" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  style={{ width: '14px', height: '14px' }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                <span 
-                  className="text-gray-500"
-                  style={{
-                    fontFamily: 'Inter',
-                    fontWeight: 500,
-                    fontSize: '16px',
-                    lineHeight: '150%',
-                    letterSpacing: '0%',
-                    verticalAlign: 'middle'
-                  }}
-                >
-                  Add new task
-                </span>
-              </button>
+                  {/* Add New Task Button - Only one per day */}
+                  <button
+                    onClick={() => handleOpenAddTaskModal(day)}
+                    className="w-full mt-2 mb-4 flex items-center justify-center transition-all duration-200"
+                    style={{
+                      height: '44px',
+                      gap: '8px',
+                      padding: '4px',
+                      borderRadius: '8px',
+                      border: '1px dashed #D1D5DB',
+                      background: 'transparent'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#E1EFFE';
+                      e.currentTarget.style.border = '1px dashed #1A56DB';
+                      const svg = e.currentTarget.querySelector('svg') as SVGElement;
+                      const span = e.currentTarget.querySelector('span') as HTMLElement;
+                      if (svg) svg.style.color = '#1A56DB';
+                      if (span) span.style.color = '#1A56DB';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px dashed #D1D5DB';
+                      const svg = e.currentTarget.querySelector('svg') as SVGElement;
+                      const span = e.currentTarget.querySelector('span') as HTMLElement;
+                      if (svg) svg.style.color = '#6B7280';
+                      if (span) span.style.color = '#6B7280';
+                    }}
+                  >
+                    <svg 
+                      className="text-gray-500" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                      style={{ width: '14px', height: '14px' }}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span 
+                      className="text-gray-500 text-sm lg:text-base"
+                      style={{
+                        fontFamily: 'Inter',
+                        fontWeight: 500,
+                        lineHeight: '150%',
+                        letterSpacing: '0%',
+                        verticalAlign: 'middle'
+                      }}
+                    >
+                      Add new task
+                    </span>
+                  </button>
                 </div>
               </>
             ))}
@@ -398,7 +398,7 @@ export default function TimesheetDetailScreen() {
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-8 flex justify-between items-center">
+        <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <button
             onClick={handleBack}
             className="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center"
@@ -418,9 +418,8 @@ export default function TimesheetDetailScreen() {
 
         {/* Footer container - same as dashboard */}
         <div 
-          className="flex justify-center items-center bg-white rounded-lg mt-8"
+          className="flex justify-center items-center bg-white rounded-lg mt-8 w-full"
           style={{ 
-            width: '100%',
             height: '85px',
             gap: '32px',
             opacity: 1,
@@ -445,5 +444,5 @@ export default function TimesheetDetailScreen() {
         } : undefined}
       />
     </div>
-      );
-  }
+  );
+}

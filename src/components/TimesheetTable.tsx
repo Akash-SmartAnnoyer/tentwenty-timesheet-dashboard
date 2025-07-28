@@ -86,58 +86,72 @@ export default function TimesheetTable({ timesheets, onRefresh, onEdit }: Timesh
 
   return (
     <div 
-      className="overflow-hidden rounded-lg"
+      className="overflow-hidden rounded-lg w-full"
       style={{
-        width: '1232px',
         opacity: 1,
         borderRadius: '8px',
         background: '#FFFFFF',
         boxShadow: '0px 1px 2px -1px #0000001A, 0px 1px 3px 0px #0000001A'
       }}
     >
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-2 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              WEEK #
-            </th>
-            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              DATE
-            </th>
-            <th className="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-              STATUS
-            </th>
-            <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-              ACTIONS
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-                      {timesheets.map((timesheet) => (
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-2 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <span className="hidden sm:inline">WEEK #</span>
+                <span className="sm:hidden">WK</span>
+              </th>
+              <th className="px-2 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <span className="hidden sm:inline">DATE</span>
+                <span className="sm:hidden">DATE</span>
+              </th>
+              <th className="px-2 sm:px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                STATUS
+              </th>
+              <th className="px-2 sm:px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                ACTIONS
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {timesheets.map((timesheet) => (
               <tr key={timesheet.id} className="hover:bg-gray-50">
                 <td className="px-2 py-3 whitespace-nowrap text-sm text-gray-500">
                   {timesheet.weekNumber}
                 </td>
-                <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                  {(() => {
-                    const date = new Date(timesheet.date);
-                    const weekStart = startOfWeek(date, { weekStartsOn: 1 });
-                    const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
-                    return `${format(weekStart, 'd')} - ${format(weekEnd, 'd MMMM, yyyy')}`;
-                  })()}
-                </td>
-                <td className="px-6 py-3 whitespace-nowrap text-center">
-                  <span className={`inline-flex px-3 py-1 text-xs rounded-full ${getStatusColor(timesheet.status)}`}>
-                    {timesheet.status.toUpperCase()}
+                <td className="px-2 sm:px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                  <span className="hidden sm:inline">
+                    {(() => {
+                      const date = new Date(timesheet.date);
+                      const weekStart = startOfWeek(date, { weekStartsOn: 1 });
+                      const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
+                      return `${format(weekStart, 'd')} - ${format(weekEnd, 'd MMMM, yyyy')}`;
+                    })()}
+                  </span>
+                  <span className="sm:hidden">
+                    {(() => {
+                      const date = new Date(timesheet.date);
+                      const weekStart = startOfWeek(date, { weekStartsOn: 1 });
+                      const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
+                      return `${format(weekStart, 'd')} - ${format(weekEnd, 'd MMM')}`;
+                    })()}
                   </span>
                 </td>
-                <td className="px-6 py-3 whitespace-nowrap text-sm text-right">
+                <td className="px-2 sm:px-6 py-3 whitespace-nowrap text-center">
+                  <span className={`inline-flex px-2 sm:px-3 py-1 text-xs rounded-full ${getStatusColor(timesheet.status)}`}>
+                    <span className="hidden sm:inline">{timesheet.status.toUpperCase()}</span>
+                    <span className="sm:hidden">{timesheet.status.charAt(0).toUpperCase()}</span>
+                  </span>
+                </td>
+                <td className="px-2 sm:px-6 py-3 whitespace-nowrap text-sm text-right">
                   {getActionButton(timesheet.status, timesheet)}
                 </td>
               </tr>
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 } 

@@ -114,15 +114,15 @@ export default function TimesheetModal({
 
   return (
     isOpen && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white rounded-xl shadow-lg w-full mx-4" style={{ maxWidth: '646px', width: '646px' }}>
-          <div className="flex justify-between items-center px-6 pt-6 pb-2 border-b border-gray-100">
-            <h2 className="text-2xl font-semibold text-gray-900">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-xl shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl" style={{ maxWidth: '646px' }}>
+          <div className="flex justify-between items-center px-4 sm:px-6 pt-4 sm:pt-6 pb-2 border-b border-gray-100">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900">
               {mode === 'edit' ? 'Update Entry' : 'Add New Entry'}
             </h2>
             <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">✕</button>
           </div>
-          <form onSubmit={handleSubmit} className="px-6 pt-4 pb-6">
+          <form onSubmit={handleSubmit} className="px-4 sm:px-6 pt-4 pb-6">
             {/* Project Dropdown */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">
@@ -207,11 +207,11 @@ export default function TimesheetModal({
               {errors.hours && <p className="text-red-500 text-xs mt-1">{errors.hours}</p>}
             </div>
             {/* Actions */}
-            <div className="flex gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button
                 type="submit"
+                className="w-full sm:w-auto"
                 style={{
-                  width: '295px',
                   height: '37px',
                   borderRadius: '8px',
                   gap: '8px',
@@ -233,8 +233,8 @@ export default function TimesheetModal({
               <button
                 type="button"
                 onClick={onClose}
+                className="w-full sm:w-auto"
                 style={{
-                  width: '295px',
                   height: '34px',
                   borderRadius: '8px',
                   border: '1px solid #D1D5DB',
